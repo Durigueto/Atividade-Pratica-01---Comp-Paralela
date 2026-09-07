@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="100%" height="100%">
+<defs>
+  <linearGradient id="gradBal" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="100%" stop-color="#f8fafc"/>
+  </linearGradient>
+</defs>
+<rect width="900" height="420" rx="12" fill="url(#gradBal)" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="240.0" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Speedup: Estático vs. Dinâmico</text>
+<line x1="60" y1="350.0" x2="420" y2="350.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="354.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">0x</text>
+<line x1="60" y1="283.33333333333337" x2="420" y2="283.33333333333337" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="287.33333333333337" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">1x</text>
+<line x1="60" y1="216.66666666666669" x2="420" y2="216.66666666666669" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="220.66666666666669" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">2x</text>
+<line x1="60" y1="150.0" x2="420" y2="150.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="154.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">3x</text>
+<line x1="60" y1="83.33333333333337" x2="420" y2="83.33333333333337" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="87.33333333333337" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">4x</text>
+<rect x="75.0" y="288.28484661438915" width="28" height="61.71515338561085" rx="3" fill="#60a5fa"/>
+<text x="89.0" y="282.28484661438915" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">0.93x</text>
+<rect x="107.0" y="287.07854502965864" width="28" height="62.92145497034135" rx="3" fill="#f59e0b"/>
+<text x="121.0" y="281.07854502965864" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">0.94x</text>
+<text x="105.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">1 Workers</text>
+<rect x="165.0" y="243.55614136690144" width="28" height="106.44385863309857" rx="3" fill="#60a5fa"/>
+<text x="179.0" y="237.55614136690144" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">1.60x</text>
+<rect x="197.0" y="247.0238074047801" width="28" height="102.97619259521991" rx="3" fill="#f59e0b"/>
+<text x="211.0" y="241.0238074047801" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">1.54x</text>
+<text x="195.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">2 Workers</text>
+<rect x="255.0" y="178.097740569472" width="28" height="171.902259430528" rx="3" fill="#60a5fa"/>
+<text x="269.0" y="172.097740569472" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">2.58x</text>
+<rect x="287.0" y="177.25320121727165" width="28" height="172.74679878272835" rx="3" fill="#f59e0b"/>
+<text x="301.0" y="171.25320121727165" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">2.59x</text>
+<text x="285.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">4 Workers</text>
+<rect x="345.0" y="113.81701279650127" width="28" height="236.18298720349873" rx="3" fill="#60a5fa"/>
+<text x="359.0" y="107.81701279650127" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">3.54x</text>
+<rect x="377.0" y="111.32294154564104" width="28" height="238.67705845435896" rx="3" fill="#f59e0b"/>
+<text x="391.0" y="105.32294154564104" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">3.58x</text>
+<text x="375.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">8 Workers</text>
+<rect x="75" y="85" width="12" height="12" rx="2" fill="#60a5fa"/>
+<text x="93" y="95" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Padrão (Estático)</text>
+<rect x="215" y="85" width="12" height="12" rx="2" fill="#f59e0b"/>
+<text x="233" y="95" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Dinâmico (chunk=1)</text>
+<text x="680.0" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Tempo Ativo e Ociosidade (4 Workers)</text>
+<line x1="500" y1="350.0" x2="860" y2="350.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="354.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">0.0s</text>
+<line x1="500" y1="285.6207649187288" x2="860" y2="285.6207649187288" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="289.6207649187288" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">0.4s</text>
+<line x1="500" y1="221.2415298374576" x2="860" y2="221.2415298374576" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="225.2415298374576" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">0.8s</text>
+<line x1="500" y1="156.8622947561864" x2="860" y2="156.8622947561864" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="160.8622947561864" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">1.2s</text>
+<line x1="500" y1="92.48305967491518" x2="860" y2="92.48305967491518" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="96.48305967491518" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">1.6s</text>
+<line x1="500" y1="126.0" x2="860" y2="126.0" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="855" y="120.0" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#ef4444" text-anchor="end">Fim Global: 1.39s</text>
+<rect x="522.5" y="144.97423443861197" width="45" height="205.02576556138803" rx="4" fill="#f87171"/>
+<text x="545.0" y="136.97423443861197" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">1.27s</text>
+<text x="545.0" y="162.97423443861197" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Ocioso</text>
+<text x="545.0" y="174.97423443861197" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">8.5%</text>
+<text x="545.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Worker 1</text>
+<rect x="612.5" y="127.67287832878671" width="45" height="222.3271216712133" rx="4" fill="#10b981"/>
+<text x="635.0" y="119.67287832878671" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">1.38s</text>
+<text x="635.0" y="145.6728783287867" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Ocioso</text>
+<text x="635.0" y="157.6728783287867" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">0.7%</text>
+<text x="635.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Worker 2</text>
+<rect x="702.5" y="147.44430474074218" width="45" height="202.55569525925782" rx="4" fill="#f87171"/>
+<text x="725.0" y="139.44430474074218" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">1.26s</text>
+<text x="725.0" y="165.44430474074218" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Ocioso</text>
+<text x="725.0" y="177.44430474074218" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">9.6%</text>
+<text x="725.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Worker 3</text>
+<rect x="792.5" y="147.28548116761948" width="45" height="202.71451883238052" rx="4" fill="#f87171"/>
+<text x="815.0" y="139.28548116761948" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">1.26s</text>
+<text x="815.0" y="165.28548116761948" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Ocioso</text>
+<text x="815.0" y="177.28548116761948" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">9.5%</text>
+<text x="815.0" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Worker 4</text>
+</svg>

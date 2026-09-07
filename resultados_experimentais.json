@@ -1,0 +1,230 @@
+{
+    "metadados": {
+        "os": "Windows-10-10.0.19045-SP0",
+        "cpu": "AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD",
+        "cpus_logicas": 8,
+        "python_versao": "3.12.9",
+        "repeticoes": 3,
+        "timestamp": "2026-09-07 20:09:52"
+    },
+    "etapa1_sequencial": {
+        "tempos": [
+            2.916330399999879,
+            2.9301258000000416,
+            3.1612890000001244
+        ],
+        "media": 3.0025817333333484,
+        "desvio_padrao": 0.13761749756088615
+    },
+    "etapa2_3_paralelo": [
+        {
+            "processos": 1,
+            "tempos": [
+                3.1129650999996556,
+                2.802733399999852,
+                3.0599295000001803
+            ],
+            "tempo_medio": 2.991875999999896,
+            "desvio_padrao": 0.16593488502394124,
+            "speedup": 1.003578267726822,
+            "eficiencia": 1.003578267726822
+        },
+        {
+            "processos": 2,
+            "tempos": [
+                1.7469083999999384,
+                1.6625914000001103,
+                1.750064199999997
+            ],
+            "tempo_medio": 1.7198546666666819,
+            "desvio_padrao": 0.049616540089019334,
+            "speedup": 1.7458345705179674,
+            "eficiencia": 0.8729172852589837
+        },
+        {
+            "processos": 4,
+            "tempos": [
+                1.1593799999996008,
+                1.1913251999999375,
+                1.0669662000000244
+            ],
+            "tempo_medio": 1.1392237999998542,
+            "desvio_padrao": 0.06458323713679064,
+            "speedup": 2.635638171651376,
+            "eficiencia": 0.658909542912844
+        },
+        {
+            "processos": 8,
+            "tempos": [
+                0.7775313000001915,
+                0.7774357000002965,
+                0.7615381000000525
+            ],
+            "tempo_medio": 0.7721683666668469,
+            "desvio_padrao": 0.009206205075673914,
+            "speedup": 3.8885065264902474,
+            "eficiencia": 0.4860633158112809
+        }
+    ],
+    "etapa5_granularidade": {
+        "Exp_A_20": {
+            "qtd_tarefas": 20,
+            "t1_sequencial": 0.517584200000177,
+            "resultados": [
+                {
+                    "processos": 1,
+                    "tempo_medio": 0.7140737999998237,
+                    "speedup": 0.7248329234321506,
+                    "eficiencia": 0.7248329234321506
+                },
+                {
+                    "processos": 2,
+                    "tempo_medio": 0.4235422666667243,
+                    "speedup": 1.2220367144784918,
+                    "eficiencia": 0.6110183572392459
+                },
+                {
+                    "processos": 4,
+                    "tempo_medio": 0.3538920666665035,
+                    "speedup": 1.4625481855967448,
+                    "eficiencia": 0.3656370463991862
+                },
+                {
+                    "processos": 8,
+                    "tempo_medio": 0.4072245333333437,
+                    "speedup": 1.2710044646953913,
+                    "eficiencia": 0.1588755580869239
+                }
+            ]
+        },
+        "Exp_B_100": {
+            "qtd_tarefas": 100,
+            "t1_sequencial": 2.6758147333333304,
+            "resultados": [
+                {
+                    "processos": 1,
+                    "tempo_medio": 2.9467824666667184,
+                    "speedup": 0.908046238092391,
+                    "eficiencia": 0.908046238092391
+                },
+                {
+                    "processos": 2,
+                    "tempo_medio": 1.7154017999998057,
+                    "speedup": 1.5598763702670906,
+                    "eficiencia": 0.7799381851335453
+                },
+                {
+                    "processos": 4,
+                    "tempo_medio": 1.1645475666667455,
+                    "speedup": 2.29772901504766,
+                    "eficiencia": 0.574432253761915
+                },
+                {
+                    "processos": 8,
+                    "tempo_medio": 0.784870533333257,
+                    "speedup": 3.4092434607902096,
+                    "eficiencia": 0.4261554325987762
+                }
+            ]
+        },
+        "Exp_C_500": {
+            "qtd_tarefas": 500,
+            "t1_sequencial": 14.56000506666654,
+            "resultados": [
+                {
+                    "processos": 1,
+                    "tempo_medio": 14.521497466666915,
+                    "speedup": 1.0026517650874516,
+                    "eficiencia": 1.0026517650874516
+                },
+                {
+                    "processos": 2,
+                    "tempo_medio": 8.064555699999952,
+                    "speedup": 1.8054317693740558,
+                    "eficiencia": 0.9027158846870279
+                },
+                {
+                    "processos": 4,
+                    "tempo_medio": 4.843486333333203,
+                    "speedup": 3.0061001651772177,
+                    "eficiencia": 0.7515250412943044
+                },
+                {
+                    "processos": 8,
+                    "tempo_medio": 3.062019366666694,
+                    "speedup": 4.755033630801794,
+                    "eficiencia": 0.5943792038502242
+                }
+            ]
+        }
+    },
+    "etapa6_balanceamento": {
+        "comparativo": [
+            {
+                "processos": 1,
+                "tempo_padrao": 4.202717866666565,
+                "speedup_padrao": 0.9257273007841628,
+                "eficiencia_padrao": 0.9257273007841628,
+                "tempo_dinamico": 4.1221452666666965,
+                "speedup_dinamico": 0.9438218245551203,
+                "eficiencia_dinamica": 0.9438218245551203
+            },
+            {
+                "processos": 2,
+                "tempo_padrao": 2.436696500000077,
+                "speedup_padrao": 1.5966578794964787,
+                "eficiencia_padrao": 0.7983289397482394,
+                "tempo_dinamico": 2.5187508999999104,
+                "speedup_dinamico": 1.5446428889282988,
+                "eficiencia_dinamica": 0.7723214444641494
+            },
+            {
+                "processos": 4,
+                "tempo_padrao": 1.5088305333333665,
+                "speedup_padrao": 2.57853389145792,
+                "eficiencia_padrao": 0.64463347286448,
+                "tempo_dinamico": 1.5014540333334783,
+                "speedup_dinamico": 2.5912019817409253,
+                "eficiencia_dinamica": 0.6478004954352313
+            },
+            {
+                "processos": 8,
+                "tempo_padrao": 1.0981797666666655,
+                "speedup_padrao": 3.542744808052481,
+                "eficiencia_padrao": 0.4428431010065601,
+                "tempo_dinamico": 1.0867042666665536,
+                "speedup_dinamico": 3.5801558768153843,
+                "eficiencia_dinamica": 0.44751948460192303
+            }
+        ],
+        "telemetria_workers": {
+            "duracao_total_pool": 1.3917531000001873,
+            "workers": [
+                {
+                    "worker_idx": 1,
+                    "pid": "14736",
+                    "tempo_ativo": 1.2738626999998814,
+                    "ociosidade_percentual": 8.470640374380334
+                },
+                {
+                    "worker_idx": 2,
+                    "pid": "9300",
+                    "tempo_ativo": 1.3813592000001336,
+                    "ociosidade_percentual": 0.7468206824940649
+                },
+                {
+                    "worker_idx": 3,
+                    "pid": "13388",
+                    "tempo_ativo": 1.2585156999989522,
+                    "ociosidade_percentual": 9.573350330688479
+                },
+                {
+                    "worker_idx": 4,
+                    "pid": "15048",
+                    "tempo_ativo": 1.2595025000000533,
+                    "ociosidade_percentual": 9.502446949830123
+                }
+            ]
+        }
+    }
+}

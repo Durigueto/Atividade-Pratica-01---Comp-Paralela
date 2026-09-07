@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="100%" height="100%">
+<defs>
+  <linearGradient id="gradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="100%" stop-color="#f8fafc"/>
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.1"/>
+  </filter>
+</defs>
+<rect width="900" height="420" rx="12" fill="url(#gradBg)" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="240.0" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Speedup vs. Número de Processos</text>
+<line x1="60" y1="350.0" x2="420" y2="350.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="354.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">0</text>
+<line x1="60" y1="284.11764705882354" x2="420" y2="284.11764705882354" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="288.11764705882354" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">2</text>
+<line x1="60" y1="218.23529411764707" x2="420" y2="218.23529411764707" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="222.23529411764707" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">4</text>
+<line x1="60" y1="152.35294117647058" x2="420" y2="152.35294117647058" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="156.35294117647058" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">6</text>
+<line x1="60" y1="86.47058823529414" x2="420" y2="86.47058823529414" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="50" y="90.47058823529414" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">8</text>
+<line x1="102.35294117647058" y1="70" x2="102.35294117647058" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="102.35294117647058" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">1</text>
+<line x1="144.70588235294116" y1="70" x2="144.70588235294116" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="144.70588235294116" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">2</text>
+<line x1="229.41176470588235" y1="70" x2="229.41176470588235" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="229.41176470588235" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">4</text>
+<line x1="398.8235294117647" y1="70" x2="398.8235294117647" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="398.8235294117647" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">8</text>
+<line x1="60.0" y1="350.0" x2="398.8235294117647" y2="86.47058823529414" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>
+<polyline points="102.4,316.9 144.7,292.5 229.4,263.2 398.8,221.9" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="102.4" cy="316.9" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<rect x="80.35294117647058" y="292.94095118076353" width="44" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="102.35294117647058" y="305.94095118076353" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">1.00x</text>
+<circle cx="144.7" cy="292.5" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<rect x="122.70588235294116" y="268.490155324114" width="44" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="144.70588235294116" y="281.490155324114" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">1.75x</text>
+<circle cx="229.4" cy="263.2" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<rect x="207.41176470588235" y="239.17897787501352" width="44" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="229.41176470588235" y="252.17897787501352" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">2.64x</text>
+<circle cx="398.8" cy="221.9" r="5.5" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<rect x="376.8235294117647" y="197.90802030385066" width="44" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="398.8235294117647" y="210.90802030385066" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">3.89x</text>
+<circle cx="80" cy="95" r="4" fill="#2563eb"/>
+<text x="90" y="99" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Experimental</text>
+<line x1="180" y1="95" x2="205" y2="95" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3"/>
+<text x="215" y="99" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Ideal (S = N)</text>
+<text x="680.0" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Eficiência vs. Processos (%)</text>
+<line x1="500" y1="350.0" x2="860" y2="350.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="354.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">0%</text>
+<line x1="500" y1="289.1304347826087" x2="860" y2="289.1304347826087" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="293.1304347826087" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">25%</text>
+<line x1="500" y1="228.26086956521738" x2="860" y2="228.26086956521738" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="232.26086956521738" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">50%</text>
+<line x1="500" y1="167.3913043478261" x2="860" y2="167.3913043478261" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="171.3913043478261" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">75%</text>
+<line x1="500" y1="106.52173913043478" x2="860" y2="106.52173913043478" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="490" y="110.52173913043478" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">100%</text>
+<line x1="542.3529411764706" y1="70" x2="542.3529411764706" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="542.3529411764706" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">1</text>
+<line x1="584.7058823529412" y1="70" x2="584.7058823529412" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="584.7058823529412" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">2</text>
+<line x1="669.4117647058823" y1="70" x2="669.4117647058823" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="669.4117647058823" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">4</text>
+<line x1="838.8235294117646" y1="70" x2="838.8235294117646" y2="350" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="838.8235294117646" y="370" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">8</text>
+<line x1="500" y1="106.52173913043478" x2="860" y2="106.52173913043478" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>
+<polyline points="542.4,105.7 584.7,137.5 669.4,189.6 838.8,231.7" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="537.3529411764706" y="100.65050872738249" width="10" height="10" rx="2" fill="#16a34a" stroke="#ffffff" stroke-width="2"/>
+<rect x="517.3529411764706" y="81.65050872738249" width="50" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="542.3529411764706" y="94.65050872738249" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">100.4%</text>
+<rect x="579.7058823529412" y="132.46361750216047" width="10" height="10" rx="2" fill="#16a34a" stroke="#ffffff" stroke-width="2"/>
+<rect x="559.7058823529412" y="113.46361750216047" width="50" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="584.7058823529412" y="126.46361750216047" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">87.3%</text>
+<rect x="664.4117647058823" y="184.56985042122056" width="10" height="10" rx="2" fill="#16a34a" stroke="#ffffff" stroke-width="2"/>
+<rect x="644.4117647058823" y="165.56985042122056" width="50" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="669.4117647058823" y="178.56985042122056" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">65.9%</text>
+<rect x="833.8235294117646" y="226.65414919377508" width="10" height="10" rx="2" fill="#16a34a" stroke="#ffffff" stroke-width="2"/>
+<rect x="813.8235294117646" y="207.65414919377508" width="50" height="18" rx="4" fill="#1e293b" opacity="0.9"/>
+<text x="838.8235294117646" y="220.65414919377508" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">48.6%</text>
+<rect x="520" y="91" width="8" height="8" rx="2" fill="#16a34a"/>
+<text x="535" y="99" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Experimental</text>
+<line x1="630" y1="95" x2="655" y2="95" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3"/>
+<text x="665" y="99" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Ideal (100%)</text>
+</svg>
