@@ -1,18 +1,9 @@
-"""
-Etapa 2 e 3 - Implementação Paralela e Registro dos Resultados
-Computação Paralela e Distribuída - Atividade Prática 01
-
-Execução paralela utilizando ProcessPoolExecutor com 1, 2, 4 e 8 processos,
-calculando Speedup (T1 / Tp) e Eficiência (Speedup / N).
-"""
-
 import time
 import statistics
 from concurrent.futures import ProcessPoolExecutor
 
 
 def tarefa(numero: int) -> int:
-    """Executa um cálculo aritmético intensivo para um determinado número."""
     resultado = 0
     for i in range(1, 300_000):
         resultado += (numero * i) % 97
@@ -20,7 +11,6 @@ def tarefa(numero: int) -> int:
 
 
 def executar_sequencial(dados: list[int]) -> tuple[list[int], float]:
-    """Executa sequencialmente para obter o T1 de referência."""
     inicio = time.perf_counter()
     resultados = [tarefa(num) for num in dados]
     fim = time.perf_counter()
@@ -28,7 +18,6 @@ def executar_sequencial(dados: list[int]) -> tuple[list[int], float]:
 
 
 def executar_paralelo(dados: list[int], workers: int) -> tuple[list[int], float]:
-    """Executa a tarefa utilizando ProcessPoolExecutor com o número indicado de workers."""
     inicio = time.perf_counter()
     with ProcessPoolExecutor(max_workers=workers) as executor:
         resultados = list(executor.map(tarefa, dados))
@@ -46,13 +35,11 @@ if __name__ == "__main__":
     print(f"Número de tarefas: {len(dados)} | Repetições por configuração: {repeticoes}")
     print("=" * 65)
 
-    # 1. Medir T1 sequencial de referência
     print("Calculando tempo sequencial T1 de referência...")
     tempos_seq = [executar_sequencial(dados)[1] for _ in range(repeticoes)]
     t1_referencia = statistics.mean(tempos_seq)
     print(f"T1 Sequencial Médio: {t1_referencia:.4f} s\n")
 
-    # 2. Executar paralelo para cada quantidade de processos
     tabela_resultados = []
 
     for workers in workers_lista:
@@ -72,7 +59,6 @@ if __name__ == "__main__":
             "eficiencia": eficiencia
         })
 
-    # 3. Exibir Tabela Formatada (Etapa 3)
     print(f"{'Processos (N)':<15} | {'Tempo Médio (s)':<15} | {'Speedup':<12} | {'Eficiência':<12}")
     print("-" * 65)
     for r in tabela_resultados:

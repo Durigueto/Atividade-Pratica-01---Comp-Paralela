@@ -1,16 +1,8 @@
-"""
-Etapa 1 - Implementação Sequencial
-Computação Paralela e Distribuída - Atividade Prática 01
-
-Execução sequencial de uma tarefa computacionalmente intensiva para medir o tempo T1 de referência.
-"""
-
 import time
 import statistics
 
 
 def tarefa(numero: int) -> int:
-    """Executa um cálculo aritmético intensivo para um determinado número."""
     resultado = 0
     for i in range(1, 300_000):
         resultado += (numero * i) % 97
@@ -18,7 +10,6 @@ def tarefa(numero: int) -> int:
 
 
 def executar_sequencial(dados: list[int]) -> tuple[list[int], float]:
-    """Executa a tarefa para cada elemento da lista sequencialmente."""
     inicio = time.perf_counter()
     resultados = []
 

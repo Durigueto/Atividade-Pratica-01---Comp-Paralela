@@ -1,21 +1,9 @@
-"""
-Etapa 5 - Experimento de Granularidade
-Computação Paralela e Distribuída - Atividade Prática 01
-
-Investiga como a quantidade total de tarefas influencia o aproveitamento
-dos núcleos e o overhead de gerenciamento e comunicação.
-- Experimento A: 20 tarefas (range(1, 21))
-- Experimento B: 100 tarefas (range(1, 101))
-- Experimento C: 500 tarefas (range(1, 501))
-"""
-
 import time
 import statistics
 from concurrent.futures import ProcessPoolExecutor
 
 
 def tarefa(numero: int) -> int:
-    """Executa um cálculo aritmético intensivo para um determinado número."""
     resultado = 0
     for i in range(1, 300_000):
         resultado += (numero * i) % 97

@@ -1,11 +1,3 @@
-"""
-Benchmark Completo - Computação Paralela e Distribuída
-Atividade Prática 01
-
-Executa todas as etapas do experimento, calcula médias e desvios padrão
-de múltiplas execuções e exporta os dados empíricos para resultados_experimentais.json.
-"""
-
 import os
 import sys
 import time
@@ -15,11 +7,7 @@ import statistics
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 
-# -------------------------------------------------------------
-# Definição das Tarefas Computacionais
-# -------------------------------------------------------------
 def tarefa_homogenea(numero: int) -> int:
-    """Tarefa padrão: 300.000 iterações (Etapas 1, 2, 3 e 5)."""
     resultado = 0
     for i in range(1, 300_000):
         resultado += (numero * i) % 97
@@ -27,7 +15,6 @@ def tarefa_homogenea(numero: int) -> int:
 
 
 def tarefa_heterogenea(numero: int) -> int:
-    """Tarefa desbalanceada: múltiplos de 10 exigem 1.500.000 iterações (Etapa 6)."""
     limite = 1_500_000 if (numero % 10 == 0) else 300_000
     resultado = 0
     for i in range(1, limite):
@@ -36,16 +23,12 @@ def tarefa_heterogenea(numero: int) -> int:
 
 
 def tarefa_telemetria(numero: int) -> tuple[int, int, float, float]:
-    """Tarefa heterogênea registrando PID e timestamps de início e fim."""
     inicio = time.perf_counter()
     res = tarefa_heterogenea(numero)
     fim = time.perf_counter()
     return numero, os.getpid(), inicio, fim
 
 
-# -------------------------------------------------------------
-# Rotinas de Execução
-# -------------------------------------------------------------
 def executar_seq(func, dados: list[int]) -> float:
     inicio = time.perf_counter()
     _ = [func(n) for n in dados]
@@ -64,9 +47,6 @@ def executar_par(func, dados: list[int], workers: int, chunksize: int | None = N
     return fim - inicio
 
 
-# -------------------------------------------------------------
-# Execução Principal do Benchmark
-# -------------------------------------------------------------
 def rodar_benchmark(repeticoes: int = 3):
     print("=" * 80)
     print("INICIANDO BENCHMARK COMPLETO - ATIVIDADE PRÁTICA 01")
@@ -97,9 +77,6 @@ def rodar_benchmark(repeticoes: int = 3):
         }
     }
 
-    # ---------------------------------------------------------
-    # ETAPA 1 & ETAPA 2/3: Execução Padrão (100 tarefas)
-    # ---------------------------------------------------------
     print("\n>>> Executando ETAPAS 1, 2 e 3 (100 tarefas homogêneas)...")
     tempos_seq_100 = [executar_seq(tarefa_homogenea, dados_100) for _ in range(repeticoes)]
     t1_100 = statistics.mean(tempos_seq_100)
@@ -130,9 +107,6 @@ def rodar_benchmark(repeticoes: int = 3):
         resultados["etapa2_3_paralelo"].append(item)
         print(f"Workers: {w:<2} | Tempo: {t_medio:.4f} s | Speedup: {speedup:.2f}x | Eficiência: {eficiencia:.2%}")
 
-    # ---------------------------------------------------------
-    # ETAPA 5: Granularidade (20, 100, 500 tarefas)
-    # ---------------------------------------------------------
     print("\n>>> Executando ETAPA 5 (Granularidade: 20, 100, 500 tarefas)...")
     experimentos_gran = {
         "Exp_A_20": list(range(1, 21)),
@@ -165,9 +139,6 @@ def rodar_benchmark(repeticoes: int = 3):
             "resultados": tabela_gran
         }
 
-    # ---------------------------------------------------------
-    # ETAPA 6: Balanceamento de Carga (Tarefas Heterogêneas)
-    # ---------------------------------------------------------
     print("\n>>> Executando ETAPA 6 (Balanceamento de Carga Heterogêneo)...")
     tempos_seq_het = [executar_seq(tarefa_heterogenea, dados_100) for _ in range(repeticoes)]
     t1_het = statistics.mean(tempos_seq_het)
@@ -194,7 +165,6 @@ def rodar_benchmark(repeticoes: int = 3):
         resultados["etapa6_balanceamento"]["comparativo"].append(item)
         print(f"Workers: {w} | Padrão: {t_pad:.4f}s (Sp: {sp_pad:.2f}x) | Dinâmico (chunk=1): {t_din:.4f}s (Sp: {sp_din:.2f}x)")
 
-    # Telemetria de workers individuais na carga heterogênea (4 workers)
     print("\n>>> Coletando telemetria individual de workers (4 processos)...")
     with ProcessPoolExecutor(max_workers=4) as executor:
         futures = [executor.submit(tarefa_telemetria, n) for n in dados_100]
@@ -224,9 +194,6 @@ def rodar_benchmark(repeticoes: int = 3):
 
     resultados["etapa6_balanceamento"]["telemetria_workers"] = dados_telemetria
 
-    # ---------------------------------------------------------
-    # Salvar Resultados em JSON
-    # ---------------------------------------------------------
     arquivo_saida = "resultados_experimentais.json"
     with open(arquivo_saida, "w", encoding="utf-8") as f:
         json.dump(resultados, f, indent=4, ensure_ascii=False)

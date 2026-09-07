@@ -1,19 +1,10 @@
-"""
-Geração de Gráficos em SVG Puro - Computação Paralela e Distribuída
-Atividade Prática 01
-
-Lê os dados experimentais coletados de resultados_experimentais.json e gera gráficos
-vetoriais profissionais em formato SVG (sem necessidade de bibliotecas externas como
-numpy ou matplotlib), garantindo 100% de portabilidade e renderização nativa no GitHub.
-"""
-
 import os
 import json
 
 
 def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.svg"):
     paralelo = dados["etapa2_3_paralelo"]
-    proc = [item["processos"] for item in paralelo]  # [1, 2, 4, 8]
+    proc = [item["processos"] for item in paralelo]
     speedup = [item["speedup"] for item in paralelo]
     eficiencia = [item["eficiencia"] * 100 for item in paralelo]
 
@@ -22,9 +13,6 @@ def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.s
     chart_w = 360
     chart_h = 280
 
-    # Layout de dois gráficos:
-    # Grafico 1 (Speedup): x de pad_left a pad_left + chart_w (60 a 420)
-    # Grafico 2 (Eficiência): x de 500 a 860
     x_max = 8.5
     y_max_sp = 8.5
     y_max_ef = 115.0
@@ -46,16 +34,11 @@ def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.s
     svg.append('  </filter>')
     svg.append('</defs>')
 
-    # Fundo
     svg.append(f'<rect width="{width}" height="{height}" rx="12" fill="url(#gradBg)" stroke="#e2e8f0" stroke-width="1.5"/>')
 
-    # ==========================
-    # Painel 1: Speedup
-    # ==========================
     orig_x1, orig_y1 = 60, 70
     svg.append(f'<text x="{orig_x1 + chart_w/2}" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Speedup vs. Número de Processos</text>')
 
-    # Grid e Eixos Speedup
     for v in [0, 2, 4, 6, 8]:
         _, gy = map_pt(0, v, orig_x1, orig_y1, x_max, y_max_sp, chart_h)
         svg.append(f'<line x1="{orig_x1}" y1="{gy}" x2="{orig_x1 + chart_w}" y2="{gy}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
@@ -66,12 +49,10 @@ def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.s
         svg.append(f'<line x1="{gx}" y1="{orig_y1}" x2="{gx}" y2="{orig_y1 + chart_h}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
         svg.append(f'<text x="{gx}" y="{orig_y1 + chart_h + 20}" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">{p}</text>')
 
-    # Linha Ideal S = N
     id_x1, id_y1 = map_pt(0, 0, orig_x1, orig_y1, x_max, y_max_sp, chart_h)
     id_x2, id_y2 = map_pt(8, 8, orig_x1, orig_y1, x_max, y_max_sp, chart_h)
     svg.append(f'<line x1="{id_x1}" y1="{id_y1}" x2="{id_x2}" y2="{id_y2}" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>')
 
-    # Curva Real Speedup
     pontos_sp = [map_pt(x, y, orig_x1, orig_y1, x_max, y_max_sp, chart_h) for x, y in zip(proc, speedup)]
     polyline_sp = " ".join([f"{px:.1f},{py:.1f}" for px, py in pontos_sp])
     svg.append(f'<polyline points="{polyline_sp}" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>')
@@ -81,19 +62,14 @@ def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.s
         svg.append(f'<rect x="{px - 22}" y="{py - 24}" width="44" height="18" rx="4" fill="#1e293b" opacity="0.9"/>')
         svg.append(f'<text x="{px}" y="{py - 11}" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">{sp:.2f}x</text>')
 
-    # Legenda Speedup
     svg.append(f'<circle cx="{orig_x1 + 20}" cy="{orig_y1 + 25}" r="4" fill="#2563eb"/>')
     svg.append(f'<text x="{orig_x1 + 30}" y="{orig_y1 + 29}" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Experimental</text>')
     svg.append(f'<line x1="{orig_x1 + 120}" y1="{orig_y1 + 25}" x2="{orig_x1 + 145}" y2="{orig_y1 + 25}" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3"/>')
     svg.append(f'<text x="{orig_x1 + 155}" y="{orig_y1 + 29}" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Ideal (S = N)</text>')
 
-    # ==========================
-    # Painel 2: Eficiência
-    # ==========================
     orig_x2, orig_y2 = 500, 70
     svg.append(f'<text x="{orig_x2 + chart_w/2}" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Eficiência vs. Processos (%)</text>')
 
-    # Grid e Eixos Eficiência
     for v in [0, 25, 50, 75, 100]:
         _, gy = map_pt(0, v, orig_x2, orig_y2, x_max, y_max_ef, chart_h)
         svg.append(f'<line x1="{orig_x2}" y1="{gy}" x2="{orig_x2 + chart_w}" y2="{gy}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
@@ -104,11 +80,9 @@ def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.s
         svg.append(f'<line x1="{gx}" y1="{orig_y2}" x2="{gx}" y2="{orig_y2 + chart_h}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
         svg.append(f'<text x="{gx}" y="{orig_y2 + chart_h + 20}" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">{p}</text>')
 
-    # Linha Ideal Eficiência 100%
     _, ef_100_y = map_pt(0, 100, orig_x2, orig_y2, x_max, y_max_ef, chart_h)
     svg.append(f'<line x1="{orig_x2}" y1="{ef_100_y}" x2="{orig_x2 + chart_w}" y2="{ef_100_y}" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>')
 
-    # Curva Real Eficiência
     pontos_ef = [map_pt(x, y, orig_x2, orig_y2, x_max, y_max_ef, chart_h) for x, y in zip(proc, eficiencia)]
     polyline_ef = " ".join([f"{px:.1f},{py:.1f}" for px, py in pontos_ef])
     svg.append(f'<polyline points="{polyline_ef}" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>')
@@ -118,7 +92,6 @@ def criar_svg_speedup_eficiencia(dados, output_path="assets/speedup_eficiencia.s
         svg.append(f'<rect x="{px - 25}" y="{py - 24}" width="50" height="18" rx="4" fill="#1e293b" opacity="0.9"/>')
         svg.append(f'<text x="{px}" y="{py - 11}" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">{ef:.1f}%</text>')
 
-    # Legenda Eficiência
     svg.append(f'<rect x="{orig_x2 + 20}" y="{orig_y2 + 21}" width="8" height="8" rx="2" fill="#16a34a"/>')
     svg.append(f'<text x="{orig_x2 + 35}" y="{orig_y2 + 29}" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Experimental</text>')
     svg.append(f'<line x1="{orig_x2 + 130}" y1="{orig_y2 + 25}" x2="{orig_x2 + 155}" y2="{orig_y2 + 25}" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3"/>')
@@ -158,7 +131,6 @@ def criar_svg_granularidade(dados, output_path="assets/granularidade_comparacao.
 
     svg.append(f'<text x="{width/2}" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Efeito da Granularidade no Speedup ($S = T_1 / T_p$)</text>')
 
-    # Grid
     for v in [0, 1, 2, 3, 4, 5]:
         _, gy = map_pt(0, v)
         svg.append(f'<line x1="{orig_x}" y1="{gy}" x2="{orig_x + chart_w}" y2="{gy}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
@@ -169,7 +141,6 @@ def criar_svg_granularidade(dados, output_path="assets/granularidade_comparacao.
         svg.append(f'<line x1="{gx}" y1="{orig_y}" x2="{gx}" y2="{orig_y + chart_h}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
         svg.append(f'<text x="{gx}" y="{orig_y + chart_h + 20}" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">{p} Processos</text>')
 
-    # Curvas dos Experimentos
     config_exp = [
         ("Exp_A_20", "#f97316", "Exp A: 20 tarefas (Granularidade Pequena)"),
         ("Exp_B_100", "#2563eb", "Exp B: 100 tarefas (Granularidade Média)"),
@@ -189,7 +160,6 @@ def criar_svg_granularidade(dados, output_path="assets/granularidade_comparacao.
             svg.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="5" fill="{cor}" stroke="#ffffff" stroke-width="2"/>')
             svg.append(f'<text x="{px}" y="{py - 10}" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="{cor}" text-anchor="middle">{sp:.2f}x</text>')
 
-        # Legenda
         leg_y = orig_y + 15 + (idx * 20)
         svg.append(f'<circle cx="{orig_x + 15}" cy="{leg_y}" r="4" fill="{cor}"/>')
         svg.append(f'<text x="{orig_x + 26}" y="{leg_y + 4}" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">{rotulo}</text>')
@@ -218,9 +188,6 @@ def criar_svg_balanceamento(dados, output_path="assets/balanceamento_carga.svg")
     svg.append('</defs>')
     svg.append(f'<rect width="{width}" height="{height}" rx="12" fill="url(#gradBal)" stroke="#e2e8f0" stroke-width="1.5"/>')
 
-    # ==========================
-    # Painel 1: Comparativo de Speedup (Padrão vs Dinâmico)
-    # ==========================
     svg.append(f'<text x="{orig_x1 + chart_w/2}" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Speedup: Estático vs. Dinâmico</text>')
 
     comp = bal_data["comparativo"]
@@ -244,26 +211,19 @@ def criar_svg_balanceamento(dados, output_path="assets/balanceamento_carga.svg")
         y_pad = (orig_y1 + chart_h) - h_pad
         y_din = (orig_y1 + chart_h) - h_din
 
-        # Barra Padrão
         svg.append(f'<rect x="{cx - bar_w - 2}" y="{y_pad}" width="{bar_w}" height="{h_pad}" rx="3" fill="#60a5fa"/>')
         svg.append(f'<text x="{cx - bar_w/2 - 2}" y="{y_pad - 6}" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#2563eb" text-anchor="middle">{sp_pad:.2f}x</text>')
 
-        # Barra Dinâmica
         svg.append(f'<rect x="{cx + 2}" y="{y_din}" width="{bar_w}" height="{h_din}" rx="3" fill="#f59e0b"/>')
         svg.append(f'<text x="{cx + bar_w/2 + 2}" y="{y_din - 6}" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">{sp_din:.2f}x</text>')
 
-        # Rótulo Eixo X
         svg.append(f'<text x="{cx}" y="{orig_y1 + chart_h + 20}" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569" text-anchor="middle">{w_proc} Workers</text>')
 
-    # Legenda Painel 1
     svg.append(f'<rect x="{orig_x1 + 15}" y="{orig_y1 + 15}" width="12" height="12" rx="2" fill="#60a5fa"/>')
     svg.append(f'<text x="{orig_x1 + 33}" y="{orig_y1 + 25}" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Padrão (Estático)</text>')
     svg.append(f'<rect x="{orig_x1 + 155}" y="{orig_y1 + 15}" width="12" height="12" rx="2" fill="#f59e0b"/>')
     svg.append(f'<text x="{orig_x1 + 173}" y="{orig_y1 + 25}" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">Dinâmico (chunk=1)</text>')
 
-    # ==========================
-    # Painel 2: Ociosidade dos Workers (4 Workers)
-    # ==========================
     orig_x2, orig_y2 = 500, 70
     svg.append(f'<text x="{orig_x2 + chart_w/2}" y="40" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#0f172a">Tempo Ativo e Ociosidade (4 Workers)</text>')
 
@@ -276,12 +236,10 @@ def criar_svg_balanceamento(dados, output_path="assets/balanceamento_carga.svg")
         svg.append(f'<line x1="{orig_x2}" y1="{gy}" x2="{orig_x2 + chart_w}" y2="{gy}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>')
         svg.append(f'<text x="{orig_x2 - 10}" y="{gy + 4}" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="end">{v:.1f}s</text>')
 
-    # Linha de Término Global
     y_fim_global = (orig_y2 + chart_h) - (dur_total / max_tempo) * chart_h
     svg.append(f'<line x1="{orig_x2}" y1="{y_fim_global}" x2="{orig_x2 + chart_w}" y2="{y_fim_global}" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4"/>')
     svg.append(f'<text x="{orig_x2 + chart_w - 5}" y="{y_fim_global - 6}" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#ef4444" text-anchor="end">Fim Global: {dur_total:.2f}s</text>')
 
-    # Barras de cada worker
     w_bar_gap = chart_w / len(telemetria)
     w_bar_w = 45
     for i, w_item in enumerate(telemetria):
